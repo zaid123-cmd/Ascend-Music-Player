@@ -48,11 +48,8 @@ body {
           -45deg,
           #000000,
           #03cb00,
-          #000000,
-          #03cb00,
-          #000000,
-          #03cb00,
           #000000
+         
         );
         backdrop-filter: blur(10px);
   color: #ffffff;
