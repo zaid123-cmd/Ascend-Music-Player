@@ -307,6 +307,10 @@ position: relative;
   height: 100%;
 } */
 
+.mob-nav{
+  background-color: #232323 !important;
+}
+
 #startbtn {
   background-color: #03cb00;
   color: #ffffff;
@@ -760,14 +764,28 @@ position: relative;
 
   .spline {
     width: 200%;
-    height: 170vh;
+    height: 140vh;
     left: -45%;
   }
 
-  .music-text {
-    display: none;
-    font-size: 12vw;
-    left: 40px;
+  .music-text{
+    font-family: "Zen Dots", cursive;
+    font-size: 0;
+     width: 100vw;
+    left: 0px;
+    text-align: center;
+    top: 45px;
+  }
+
+  .hambtn{
+        background-color: #232323;
+  }
+
+  .music-text::before {
+    /* display: none; */
+    content: "Ascend Music Player";
+    font-size: 10vw;
+   
   }
   #sec-text, #about-text {
     font-size: 1rem;
@@ -817,7 +835,8 @@ position: relative;
 
     <header>
       <div class="header fade-in">
-        <img
+        <div class="mob-nav">
+           <img
           id="ascend-logo"
           src="assets/Ascend-logo.webp"
           alt="Ascend Music Player Logo"
@@ -830,6 +849,9 @@ position: relative;
           id="ham"
           class="ham"
         />
+
+        </div>
+       
 
         <ul id="navbar">
           <li><a href="#navbar">Home</a></li>
