@@ -25,6 +25,28 @@ html {
   color: #03cb00;
 }
 
+
+#preloader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: #03cb00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.monogram {
+  color:#232323 ;
+  font-family:"Zen Dots", cursive;
+  font-size: 150px;
+  font-weight: 100;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+
 main {
   height: 100vh;
   overflow-x: hidden;
@@ -161,7 +183,7 @@ position: relative;
 .float-right{
   position: absolute;
   right: 90px;
-  top: 7.3rem;
+  top: 9.3rem;
 }
 
 
@@ -178,7 +200,7 @@ position: relative;
   width: 170%;
   height: 81vh;
   position: absolute;
-  left:-36%;
+  left:-33%;
   /* overflow: hidden; */
 }
 
@@ -721,6 +743,10 @@ position: relative;
     display: none;
     font-size: 7vw;
   }
+
+  .monogram {
+   font-size: 60px;
+  }
   .music-text {
     display: none;
     font-size: 11vw;
@@ -752,6 +778,10 @@ position: relative;
     display: none;
     font-size: 8vw;
     left: 20px;
+  }
+
+  .monogram {
+    font-size: 40px;
   }
 
   .right {
@@ -813,6 +843,10 @@ position: relative;
     />
   </head>
   <body>
+
+     <div id="preloader">
+      <div class="monogram">ASCEND</div>
+    </div>
     <div class="hambtn">
       <div class="hamnav">
         <ul id="hamlist">
@@ -1038,6 +1072,59 @@ position: relative;
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
 
 <script>
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("load", () => {
+    const ptl = gsap.timeline();
+
+
+   ptl.to(".monogram", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.5,
+      ease: "power3.out"
+    })
+      .to(".monogram", {
+        scale: 1.4,
+        opacity: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: "power2.in"
+      })
+      .to("#preloader", {
+        opacity: 0,
+        duration: 0.6,
+        onComplete: () => {
+          document.getElementById("preloader").style.display = "none";
+        }
+      })
+
+      // Navbar drop down
+      .from("#navbar", {
+        y: -80,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power3.out"
+      }, "-=0.3")
+
+      
+
+      // Hero text left + right animations
+      .from(".text ,.music-text", {
+        x: -80,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=0.1")
+      .from(".right", {
+        x: 80,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      }, "-=0.6");
+  });
+
   
 
   const hamMenu = document.querySelector(".hambtn");
