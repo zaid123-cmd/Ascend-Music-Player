@@ -5,493 +5,794 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ascend Music-Player : Music for everyone</title>
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-    <!-- AOS CSS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-
     <style>
-
       @import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
-      .fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 2s ease forwards;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@keyframes fadeInUp {
+
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  background-color: #171515;
+  color: #03cb00;
+}
+
+main {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.header {
+  backdrop-filter: blur(40px);
+  /* margin: auto; */
+  /* height: 47px; */
+  position: fixed;
+  /* margin-top: 12px; */
+  top: 0px;
+  /* position: relative; */
+  border-bottom: 1px solid #028400;
+  width: 100%;
+  z-index: 10;
+}
+
+#ascend-logo {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: -9px;
+  width: 50px;
+  height: 66px;
+}
+
+.hamnav {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  font-size: 1.5rem;
+}
+
+#hamlist {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hamnav li > a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#navbar {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 10px 0;
+  z-index: 11;
+  font-size: 0.9rem;
+}
+
+#navbar li {
+  position: relative;
+  font-family: 'OutFit' , sans-serif;
+  font-size: 1.1rem;
+}
+
+#navbar li > a {
+  color: #03cb00;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#navbar li > a:hover {
+  color: hsl(119, 100%, 77%);
+  transform: scale(1.1);
+}
+
+.nav-head{
+  font-family: "Zen Dots", cursive !important;
+    font-size: 2.1em !important;
+    text-shadow: #028400;
+}
+
+#ham {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: -9px;
+  width: 50px;
+  height: 66px;
+}
+
+.hambtn {
+  display: none;
+}
+
+.text {
+  display: flex;
+  font-family: "Zen Dots", cursive;
+  font-family: "OutFit", cursive;
+  max-width: 100%;
+  font-size: 7.4em;
+  position: absolute;
+  gap: 0.3em;
+  left: 40px;
+  /* margin: auto; */
+  margin-top: 60px;
+    /* margin-left:30px ; */
+
+  /* justify-content: center; */
+}
+
+.music-text {
+position: relative;
+  display: flex;
+  top: 190px;
+  left: 90px;
+  font-family: "Zen Dots", cursive;
+    font-family: "OutFit", cursive;
+  max-width: 100%;
+  font-size: 7.4em;
+  /* margin-top: -7px; */
+  /* margin-left:30px ; */
+  /* margin-top: 40px; */
+  /* justify-content: center; */
+}
+.right{
+  position: relative;
+  right: 0px;
+  font-family: "OutFit", cursive;
+  max-width: 100%;
+  font-size: 7.4em;
+  position: absolute;
+  top: 60px;
+}
+
+.float-right{
+  position: absolute;
+  right: 90px;
+  top: 7.3rem;
+}
+
+
+.seperation {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: #98f646;
+  /* margin-top: 20px; */
+  z-index: 99999;
+}
+
+.spline {
+  width: 170%;
+  height: 81vh;
+  position: absolute;
+  left:-36%;
+  /* overflow: hidden; */
+}
+
+.split{
+  opacity: 0;
+  will-change: auto;
+}
+
+.split *{
+  will-change: auto;
+}
+
+.mwg_effect000 {
+    font-family: 'OutFit',sans-serif !important;
+    background-color: #171515;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.mwg_effect000 .header {
+  font-family: 'OutFit' ,sans-serif;
+      color: #03cb00 !important;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #323232;
+    padding: 20px 25px;
+    color: #BAB8B9;
+}
+.mwg_effect000 .header div:nth-child(2) {
+    font-size: 26px;
+}
+.mwg_effect000 .header div:last-child {
+    display: flex;
+    justify-content: flex-end;
+}
+.mwg_effect000 .button {
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 12px;
+    height: 48px;
+    gap: 5px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    width: max-content; 
+}
+.mwg_effect000 .button1 {
+    background-color: #232323;
+}
+.mwg_effect000 .button2 {
+    font-family: 'OutFit' , sans-serif; 
+    border: 1px solid #323232;
+    background-color: #323232;
+    color: #03cb00;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mwg_effect000 .button2:hover{
+  background-color:#03cb00;
+  color: #ffffff;
+} 
+
+
+.mwg_effect000 .button img {
+    width: 22px;
+    height: auto;
+    display: block;
+}
+
+.mwg_effect000 .medias {
+  margin-top: 2vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1vw;
+}
+.mwg_effect000 .medias img {
+    width: 11vw;
+    height: 11vw;
+    object-fit: contain;
+    border-radius: 4%;
+    display: block;
+    pointer-events: none;
+    will-change: transform;
+}
+
+@media (max-width: 768px) {
+    .mwg_effect000 .header {
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .mwg_effect000 .header div:nth-child(2) {
+        display: none;
+    }
+    .mwg_effect000 .medias {
+        gap: 2vw;
+    }
+    .mwg_effect000 .medias img {
+        width: 18vw;
+        height: 18vw;
+    }
+}
+
+
+
+
+
+/* #spline-model {
+  position: absolute;
+  top: 25%;
+  right: 70px;
+  bottom: 0;
+  margin-right: -29px;
+  width: 90%;
+  z-index: 0;
+  height: 100%;
+} */
+
+#startbtn {
+  background-color: #03cb00;
+  color: #ffffff;
+  border: none;
+  width: 100%;
+  z-index: 100000;
+  position: relative;
+  /* position: fixed; */
+  bottom: 90px;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Zen Dots", cursive;
+  border: #ffffff 2px solid;
+}
+
+#startbtn:hover {
+  background-color: #028400;
+  transition: background-color 0.3s ease;
+}
+
+.second-section {
+  background-color:#171515 !important ;
+  backdrop-filter: blur(30px);
+  height: auto;
+  padding: 20px;
+  text-align: center;
+  font-family: "Zen Dots", cursive;
+}
+
+#second-heading{
+    margin-top: 40px;
+  font-size: 2.5rem;
+}
+
+#sec-text {
+    font-family: 'OutFit' , sans-serif ;
+    color: #2bfa28a5;
+  /* font-weight: lighter; */
+  font-size: 32px;
+  line-height: 36px;
+  /* padding: 38px 10px; */
+  text-align: center;
+  max-width: 90%;
+  margin: 60px auto !important;
+}
+
+#about-section {
+  background-color: #171515 !important;
+  backdrop-filter: blur(10px);
+  height: 100vh;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-family: "Zen Dots", cursive;
+}
+.about > h1 {
+    margin-top: 70px;
+
+  color: #03cb00;
+  font-size: 2.9rem;
+  margin-bottom: 60px;
+}
+
+#about-text {
+  font-family: 'OutFit' , 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: #03cb00b6;
+ font-size: 32px;
+  line-height: 46px;
+  max-width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+#contact-section {
+  color: #03cb00 !important;
+  margin-top: 20px;
+  position: relative;
+  backdrop-filter: blur(10px);
+  /* top: 45.63em; */
+  height: auto;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-family: "Zen Dots", cursive;
+}
+
+
+#contact-section a{
+  text-decoration: none;
+  margin: 30px;
+}
+
+ #hamlist{
+    font-family: "OutFit", sans-serif !important;
+    padding: 30px;
+    text-decoration: none;
+}
+
+#hamlist li {
+  list-style: none;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  color: #03cb00 !important;
+}
+
+#hamlist li a {
+  color:#03cb00;
+}
+
+
+
+
+
+
+
+.wrapper {
+  width: 90%;
+  max-width: 1536px;
+  margin-inline: auto;
+  position: relative;
+  height: 200px;
+  margin-top: 3rem;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+@keyframes scrollLeft {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    left: -200px;
   }
 }
 
+.item {
+  width: 200px;
+  height: 200px;
+  /* background-color: red; */
+  border-radius: 6px;
+  position: absolute;
+  left: max(calc(200px * 8), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
 
-      div:empty,
-      section:empty {
-        display: none;
-      }
-      html {
-        scroll-behavior: smooth;
-        /* background-attachment: fixed; */
-        background: linear-gradient(
-          -45deg,
-          #000000,
-          #03cb00,
-          #000000
-        );
+.item1 {
+  animation-delay: calc(30s / 8 * (8 - 1) * -1);
+}
 
-        height: 100%;
-        width: 100%;
-      }
+.item2 {
+  animation-delay: calc(30s / 8 * (8 - 2) * -1);
+}
 
-      body {
-        background: linear-gradient(
-          -45deg,
-          #000000,
-          #03cb00,
-          #000000
-        );
-        /* background-attachment: fixed; */
+.item3 {
+  animation-delay: calc(30s / 8 * (8 - 3) * -1);
+}
 
-        background-repeat: no-repeat;
-        /* backdrop-filter: blur(10px); */
-        height: 100vh;
+.item4 {
+  animation-delay: calc(30s / 8 * (8 - 4) * -1);
+}
 
-        /* filter: blur(3px); */
-      }
+.item5 {
+  animation-delay: calc(30s / 8 * (8 - 5) * -1);
+}
 
-      main {
-        height: 90vh;
-      }
+.item6 {
+  animation-delay: calc(30s / 8 * (8 - 6) * -1);
+}
 
-      .header {
-        backdrop-filter: blur(40px);
-        margin: auto;
-        height: 47px;
-        position: fixed;
-        /* margin-top: 12px; */
-        top: 12px;
-        position: relative;
-        width: 100%;
-        border-radius: 30px;
-        font-weight: lighter;
-        border: #ffffff 2px solid;
-        z-index: 10;
-      }
+.item7 {
+  animation-delay: calc(30s / 8 * (8 - 7) * -1);
+}
 
-      #ascend-logo {
-        display: none;
-        position: absolute;
-        right: 20px;
-        top: -9px;
-        width: 50px;
-        height: 66px;
-      }
+.item8 {
+  animation-delay: calc(30s / 8 * (8 - 8) * -1);
+}
 
-      .hamnav {
-        color: #ffffff;
-        font-family: "Zen Dots", cursive;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5em;
-        font-size: 1.5rem;
-      }
+@media (max-width: 1230px) {
+  .text {
+    font-size: 6.5em;
+  }
+  .music-text {
+    font-size: 15em;
+  }
+  body {
+    width: auto;
+  }
+}
 
-      #hamlist {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-      }
+@media (max-width: 1400px) {
+  .text {
+    font-size: 6vw;
+  }
+  .music-text {
+    font-size: 8vw;
+    letter-spacing: normal;
+  }
 
-      .hamnav li > a {
-        color: #ffffff;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      #navbar {
-        display: flex;
-        justify-content: space-around;
-        list-style-type: none;
-        padding: 10px 0;
-        color: white;
-        font-family: "Zen Dots", cursive;
-        /* position: fixed; */
-        z-index: 11;
-
-        font-size: 0.9rem;
-      }
-
-      #navbar li {
-        position: relative;
-      }
-
-      #navbar li > a {
-        color: #ffffff;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      #navbar li > a:hover {
-        color: hsl(119, 96%, 44%);
-        transition: transform color 0.3s ease;
-        transform: scale(1.1);
-      }
-
-      #ham {
-        display: none;
-        position: absolute;
-        right: 20px;
-        top: -9px;
-        width: 50px;
-        height: 66px;
-      }
-
-      .hambtn {
-        display: none;
-      }
-
-      .text {
-        display: flex;
-        color: #ffffff;
-        font-family: "Zen Dots", cursive;
-        max-width: 100%;
-        font-size: 7.4em;
-        gap: 1.3em;
-        margin: auto;
-        margin-top: 60px;
-        justify-content: center;
-      }
-
-      .music-text {
-        display: flex;
-        color: #ffffff;
-        font-family: "Zen Dots", cursive;
-        max-width: 100%;
-        font-size: 17.5em;
-        /* margin-top: -7px; */
-        letter-spacing: 18px;
-        margin: auto;
-        /* margin-top: 40px; */
-        justify-content: center;
-      }
-
-      .seperation {
-        position: relative;
-        width: 100%;
-        height: 12px;
-        background-color: #000000;
-        /* margin-top: 20px; */
-      }
-
-      #spline-model {
-        position: absolute;
-        right: 70px;
-        bottom: 0;
-        margin-right: -29px;
-        width: 90%;
-        z-index: 0;
-        height: 80%;
-        overflow: hidden;
-      }
-
-      #startbtn {
-        background-color: #03cb00;
-        color: #ffffff;
-        border: none;
-        width: 100%;
-        z-index: 100000;
-        position: relative;
-        /* position: fixed; */
-        bottom: 90px;
-        cursor: pointer;
-        border-radius: 50px;
-        padding: 10px 20px;
-        font-size: 1rem;
-        cursor: pointer;
-        font-family: "Zen Dots", cursive;
-        border: #ffffff 2px solid;
-      }
-
-      #startbtn:hover {
-        background-color: #028400;
-        transition: background-color 0.3s ease;
-      }
-
-      .second-section {
-        background-repeat: no-repeat;
-        backdrop-filter: blur(20px);
-        height: auto;
-        color: #ffffff;
-        /* top: 0; */
-        /* width: 100%; */
-        /* top: 45.63em; */
-        position: relative;
-        margin-top: 120px;
-        padding: 20px;
-        text-align: center;
-        font-family: "Zen Dots", cursive;
-      }
-
-      #sec-text {
-        font-weight: lighter;
-        font-size: 24px;
-        line-height: 60px;
-        padding: 38px 10px;
-        text-align: center;
-        max-width: 90%;
-        margin: auto;
-      }
-
-      #about-section {
-        margin-top: 70px;
-        position: relative;
-        backdrop-filter: blur(10px);
-        /* top: 45.63em; */
-        height: auto;
-        color: #ffffff;
-        padding: 20px;
-        text-align: center;
-        font-family: "Zen Dots", cursive;
-      }
-      .about > h1 {
-        font-size: 2.5rem;
-        margin-bottom: 60px;
-      }
-
-      #about-text {
-        font-size: 28px;
-        line-height: 60px;
-        max-width: 90%;
-        text-align: center;
-        margin: auto;
-      }
-
-      #contact-section {
-        margin-top: 20px;
-        position: relative;
-        backdrop-filter: blur(10px);
-        /* top: 45.63em; */
-        height: auto;
-        color: #ffffff;
-        padding: 20px;
-        text-align: center;
-        font-family: "Zen Dots", cursive;
-      }
-
-      .wrapper {
-        width: 90%;
-        max-width: 1536px;
-        margin-inline: auto;
-        position: relative;
-        height: 200px;
-        margin-top: 3rem;
-        overflow: hidden;
-        mask-image: linear-gradient(
-          to right,
-          rgba(0, 0, 0, 0),
-          rgba(0, 0, 0, 1) 20%,
-          rgba(0, 0, 0, 1) 80%,
-          rgba(0, 0, 0, 0)
-        );
-      }
-
-      @keyframes scrollLeft {
-        to {
-          left: -200px;
-        }
-      }
-
-      .item {
-        width: 200px;
-        height: 200px;
-        /* background-color: red; */
-        border-radius: 6px;
-        position: absolute;
-        left: max(calc(200px * 8), 100%);
-        animation-name: scrollLeft;
-        animation-duration: 30s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-      }
-
-      .item1 {
-        animation-delay: calc(30s / 8 * (8 - 1) * -1);
-      }
-
-      .item2 {
-        animation-delay: calc(30s / 8 * (8 - 2) * -1);
-      }
-
-      .item3 {
-        animation-delay: calc(30s / 8 * (8 - 3) * -1);
-      }
-
-      .item4 {
-        animation-delay: calc(30s / 8 * (8 - 4) * -1);
-      }
-
-      .item5 {
-        animation-delay: calc(30s / 8 * (8 - 5) * -1);
-      }
-
-      .item6 {
-        animation-delay: calc(30s / 8 * (8 - 6) * -1);
-      }
-
-      .item7 {
-        animation-delay: calc(30s / 8 * (8 - 7) * -1);
-      }
-
-      .item8 {
-        animation-delay: calc(30s / 8 * (8 - 8) * -1);
-      }
-
-      @media (max-width: 1230px) {
-        .text {
-          font-size: 6.5em;
-        }
-        .music-text {
-          font-size: 15em;
-        }
-        body {
-          width: auto;
-        }
-      }
-
-      @media (max-width: 1400px) {
-        .text {
-          font-size: 6vw;
-        }
-        .music-text {
-          font-size: 8vw;
-          letter-spacing: normal;
-        }
-
-        /* #navbar {
+  /* #navbar {
           flex-direction: column;
           align-items: center;
         } */
-      }
+}
 
-      @media screen and (max-width: 768px) {
-        #navbar {
-          display: none;
-        }
+@media screen and (max-width: 768px) {
+  #navbar {
+    display: none;
+  }
 
-        main {
-          height: 62vh;
-        }
+  main {
+    height: 100vh;
+  }
 
-        #startbtn {
-          bottom: 20px;
-        }
+  #startbtn {
+    bottom: 20px;
+  }
 
-        #spline-model {
-          right: 30px;
-          bottom: 0px;
-          top: 162px;
-          height: 60%;
-        }
+  #spline-model {
+    right: 30px;
+    bottom: 0px;
+    top: 162px;
+    height: 60%;
+  }
 
-        #ham {
-          display: block;
-          position: absolute;
-          right: 20px;
-          top: -9px;
-          width: 50px;
-          height: 66px;
-          transition: all 2s ease;
-        }
+  #ham {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: -9px;
+    width: 50px;
+    height: 66px;
+    transition: all 2s ease;
+  }
 
-        .hambtn {
-          transition: all 2s ease;
-          opacity: 1;
-          position: absolute;
-          top: 0;
-          z-index: 1000000;
-          height: 100vh;
-          width: 100vw;
-          background-color: #000000;
-        }
+  .hambtn {
+    font-family: "OutFit", sans-serif !important;
+    transition: all 2s ease;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    z-index: 1000000;
+    height: 100vh;
+    width: 80vw;
+    background-color:#232323;
+  }
+ 
+  #ascend-logo {
+    display: block;
+    position: absolute;
+    /* right: 20px; */
+    left: 32px;
+    top: -9px;
+  }
+  .text {
+    font-size: 7vw;
+  }
+  .music-text {
+    font-size: 11vw;
+    letter-spacing: 0;
+  }
 
-        #ascend-logo {
-          display: block;
-          position: absolute;
-          /* right: 20px; */
-          left: 32px;
-          top: -9px;
-        }
-        .text {
-          font-size: 7vw;
-        }
-        .music-text {
-          font-size: 11vw;
-          letter-spacing: 0;
-        }
+  .second-section {
+    top: 0.63em;
+    /* margin-top: 750px; */
+    /* height: 100vh; */
+    /* padding: 10px; */
+  }
 
-        .second-section {
-          top: 0.63em;
-          /* margin-top: 750px; */
-          /* height: 100vh; */
-          /* padding: 10px; */
-        }
+  #spline {
+    height: 30%;
+  }
 
-        #spline {
-          height: 30%;
-        }
+  .second > h1 {
+    font-size: 1.5rem;
+    /* margin-top: 20px; */
+  }
 
-        .second > h1 {
-          font-size: 1.5rem;
-          /* margin-top: 20px; */
-        }
+  #sec-text {
+    font-weight: lighter;
+    line-height: normal;
+    font-size: 19px;
+    padding: 10px;
+    text-align: center;
+    max-width: 90%;
+    margin: auto;
+  }
 
-        #sec-text {
-          font-weight: lighter;
-          line-height: normal;
-          font-size: 19px;
-          padding: 10px;
-          text-align: center;
-          max-width: 90%;
-          margin: auto;
-        }
+  #about-section {
+    height: auto;
+    top: 0.63em;
+    padding: 20px;
+  }
 
-        #about-section {
-          height: auto;
-          top: 0.63em;
-          padding: 20px;
-        }
+  #contact-section {
+    height: auto;
+    top: 0.63em;
+    padding: 20px;
+  }
 
-        #contact-section {
-          height: auto;
-          top: 0.63em;
-          padding: 20px;
-        }
-
-        #about-text {
-          font-weight: lighter;
-          font-size: 22px;
-          line-height: normal;
-          padding: 32px 22px;
-          text-align: center;
-          /* max-width: 90%;
+  #about-text {
+    font-weight: lighter;
+    font-size: 22px;
+    line-height: normal;
+    padding: 32px 22px;
+    text-align: center;
+    /* max-width: 90%;
           margin: auto; */
-        }
+  }
 
-        .seperation {
-          position: relative;
-          top: 0rem;
-        }
-      }
+  .seperation {
+    position: relative;
+    top: 0rem;
+  }
+}
+/* =============== VERY LARGE SCREENS (4K / 2K) =============== */
+@media screen and (min-width: 1920px) {
+  .text {
+    font-size: 8vw;
+  }
+  .music-text {
+    font-size: 9vw;
+  }
+  #sec-text, #about-text {
+    font-size: 2rem;
+    line-height: 1.8;
+  }
+  .wrapper {
+    max-width: 1800px;
+  }
+}
+
+/* =============== DESKTOP LARGE (HD screens) =============== */
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+  .text {
+    font-size: 7vw;
+  }
+  .right {
+    font-size: 7vw;
+  }
+  .music-text {
+    font-size: 8vw;
+  }
+  #sec-text, #about-text {
+    font-size: 1.8rem;
+    line-height: 1.6;
+  }
+}
+
+/* =============== LAPTOPS / SMALL DESKTOPS =============== */
+@media screen and (min-width: 1025px) and (max-width: 1439px) {
+  .text {
+    font-size: 6vw;
+  }
+  .music-text {
+    font-size: 7vw;
+  }
+  .right {
+    font-size: 6vw;
+  }
+  #navbar li {
+    font-size: 1rem;
+  }
+  #sec-text, #about-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* =============== TABLETS LANDSCAPE =============== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .text {
+    font-size: 5.5vw;
+  }
+  .music-text {
+    font-size: 6.5vw;
+  }
+
+  main{
+    height: 100vh;
+  }
+
+  .right {
+    font-size: 5.5vw;
+  }
+  #navbar li {
+    font-size: 0.95rem;
+  }
+  #sec-text, #about-text {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+  .wrapper {
+    height: 150px;
+  }
+}
+
+/* =============== TABLETS PORTRAIT / BIG MOBILES =============== */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .text {
+    display: none;
+    font-size: 7vw;
+  }
+  .music-text {
+    display: none;
+    font-size: 11vw;
+  }
+  .right {
+    display: none;
+  }
+
+  .spline {
+    width: 200%;
+    height: 150vh;
+    left: -45%;
+  }
+  #sec-text, #about-text {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  #navbar {
+    display: none;
+  }
+  #ham {
+    display: block;
+  }
+}
+
+/* =============== SMALL MOBILES =============== */
+@media screen and (max-width: 480px) {
+  .text {
+    display: none;
+    font-size: 8vw;
+    left: 20px;
+  }
+
+  .right {
+    display: none;
+  }
+
+  main{
+    height: 100vh;
+  }
+
+  .spline {
+    width: 200%;
+    height: 170vh;
+    left: -45%;
+  }
+
+  .music-text {
+    display: none;
+    font-size: 12vw;
+    left: 40px;
+  }
+  #sec-text, #about-text {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  #startbtn {
+    font-size: 0.8rem;
+    padding: 8px 14px;
+    bottom: 15px;
+  }
+  #ascend-logo {
+    width: 40px;
+    height: auto;
+  }
+  /* .wrapper {
+    height: 120px;
+  } */
+}
+
     </style>
+    <!-- AOS CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="hambtn">
@@ -533,21 +834,31 @@
         <ul id="navbar">
           <li><a href="#navbar">Home</a></li>
           <li><a href="index1.html">Albums</a></li>
+          <li class="nav-head"><a href="index1.html"><i>ASCEND</i></a></li>
           <li><a href="#about-section">About</a></li>
           <li><a href="#contact-section">Contact</a></li>
-          <!-- <li><a href="">About</a></li> -->
         </ul>
       </div>
     </header>
 
     <main id="home-section">
-      <div class="text fade-in">
-        <span>ASCEND</span>
-        <span>PLAYER</span>
+      <div class="text ">
+        <span>Enjoy</span>
+        <span>Music</span>
       </div>
-      <div class="music-text fade-in" >
-        <span>MUSIC</span>
+      <div class="music-text">
+        <span>Ad-Free</span>
       </div>
+
+      <div class="right">
+        <span>Create</span>
+        <span>Albums</span><br>
+        <span class="float-right" >Your Way</span>
+      </div>
+
+
+
+
 
       <div class="spline">
         <spline-viewer
@@ -555,17 +866,45 @@
           url="https://prod.spline.design/TX2y1vDyjpQaPide/scene.splinecode"
         ></spline-viewer>
       </div>
+
     </main>
 
-    <section class="fade-in">
-      <a href="index1.html"><button id="startbtn">Start Listening</button></a>
-    </section>
+    <!-- <div class="seperation"></div> -->
 
-    <div class="seperation"></div>
+    <section class="mwg_effect000">
+    <div class="header">
+        <div>
+            <p class="button button1">
+                <span>Ascend Music Player</span>
+            </p>
+        </div>
+        <div>8 albums saved in the inventory</div>
+        <div>
+            <button class="button button2">Add more</button>
+        </div>
+    </div>
 
-    <section class="second-section" >
-      <div class="second" data-aos="fade-up">
-        <h1 id="second-heading">Discover Music that ascends you</h1>
+    <div class="medias">
+        <div class="media"><img src="assets/yunus.jpg" alt=""></div>
+        <div class="media"><img src="assets/travis.jpg" alt=""></div>
+        <div class="media"><img src="assets/kendrick.jpeg" alt=""></div>
+        <div class="media"><img src="assets/kanye01.jpg" alt=""></div>
+        <div class="media"><img src="assets/frank.webp" alt=""></div>
+        <div class="media"><img src="assets/bolly.webp" alt=""></div>
+        <div class="media"><img src="assets/juice.jpeg" alt=""></div>
+        <div class="media"><img src="assets/talha.webp" alt=""></div>
+        <div class="media"><img src="assets/kanye01.jpg" alt=""></div>
+        <div class="media"><img src="assets/yunus.jpg" alt=""></div>
+        <div class="media"><img src="assets/bolly.webp" alt=""></div>
+        <div class="media"><img src="assets/kendrick.jpeg" alt=""></div>
+    </div>
+</section>
+
+<div class="seperation"></div>
+
+    <section class="second-section">
+      <div class="second container" data-aos="fade-up">
+        <h1 id="second-heading"><i>Customize Albums</i></h1>
         <div class="wrapper">
           <div class="item item1">
             <img src="assets/frank.webp" alt="" width="100%;" />
@@ -593,12 +932,18 @@
           </div>
         </div>
 
-        <p id="sec-text">
+        <p id="sec-text" class="split">
           Welcome to Ascend Music Player, your gateway to a transcendent musical
           experience. Immerse yourself in a world of sound that elevates your
           spirit and transports you to new dimensions. Explore our curated
           albums, discover hidden gems, and let the music guide you on a journey
           of ascension.
+        </p>
+        <p id="sec-text" class="split">
+         Pick your Songs and create your own albums. You can also
+          customize the albums that are already present in the inventory. The
+          albums are limited and specific to my listening habits. So, if you like
+          the choice of the songs we have a similar taste in music.
         </p>
       </div>
     </section>
@@ -606,10 +951,10 @@
     <div class="seperation"></div>
 
     <section id="about-section">
-      <div class="about" data-aos="fade-up">
-        <h1>About</h1>
+      <div class="about container" >
+        <h1><i>About</i></h1>
 
-        <p id="about-text">
+        <p id="about-text" class="split">
           Ascend Music Player is designed to elevate your music listening
           experience. This is a project that I made to showcase my skillset in
           frontend development. The albums are limited and specific to my
@@ -623,7 +968,7 @@
 
     <div class="seperation"></div>
 
-    <section id="contact-section" data-aos="fade-up">
+    <section id="contact-section" >
       <h1>Contact Me</h1>
       <div class="icons">
         <a href="mailto:zaidgafurinamdar@gmail.com" target="_blank">
@@ -641,31 +986,204 @@
       </div>
     </section>
 
-    <script defer
+    <script
+      defer
       type="module"
       src="https://unpkg.com/@splinetool/viewer@1.10.7/build/spline-viewer.js"
     ></script>
 
     <script>
-      // alert("Click on the hamburger icon to open the menu");
 
-      document.querySelector("#ham").addEventListener("click", () => {
-        document.querySelector(".hambtn").style.display = "block";
-      });
 
-      document.querySelector(".hamclose").addEventListener("click", () => {
-        document.querySelector(".hambtn").style.display = "none";
-      });
     </script>
 
     <!-- AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: false,
+      });
+    </script>
+
+    <!-- GSAP + SplitText + ScrollTrigger -->
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+
 <script>
-  AOS.init({
-    duration: 1000, // animation duration in milliseconds
-    once: false,     // whether animation should happen only once
+  
+
+  const hamMenu = document.querySelector(".hambtn");
+  const hamLinks = document.querySelectorAll("#hamlist li");
+  const hamBtn = document.querySelector("#ham");
+  const hamClose = document.querySelector(".hamclose");
+
+  let hamTimeline = gsap.timeline({ paused: true, reversed: true });
+
+  // Timeline for opening menu
+  hamTimeline
+    .set(hamMenu, { display: "block" }) // make visible before animating
+    .fromTo(
+      hamMenu,
+      { x: "100%", opacity: 0 },
+      { x: "0%", opacity: 1, duration: 0.5, ease: "power3.out" }
+    )
+    .from(
+      hamLinks,
+      {
+        x: 50,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: "power3.out",
+      },
+      "-=0.2"
+    );
+
+  // Open menu
+  hamBtn.addEventListener("click", () => {
+    if (hamTimeline.reversed()) {
+      hamTimeline.play();
+    }
+  });
+
+  // Close menu
+  hamClose.addEventListener("click", () => {
+    hamTimeline.reverse();
+  });
+
+  // Close menu when clicking a link
+  hamLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      hamTimeline.reverse();
+    });
+  });
+
+  window.addEventListener("DOMContentLoaded", () => {
+    gsap.registerPlugin(InertiaPlugin)
+
+    let oldX = 0, 
+        oldY = 0, 
+        deltaX = 0,
+        deltaY = 0
+    
+    const root = document.querySelector('.mwg_effect000')
+    root.addEventListener("mousemove", (e) => {
+        // Calculate horizontal movement since the last mouse position
+        deltaX = e.clientX - oldX;
+
+        // Calculate vertical movement since the last mouse position
+        deltaY = e.clientY - oldY;
+
+        // Update old coordinates with the current mouse position
+        oldX = e.clientX;
+        oldY = e.clientY;
+    })
+
+    root.querySelectorAll('.media').forEach(el => {
+
+        // Add an event listener for when the mouse enters each media
+        el.addEventListener('mouseenter', () => {
+            
+            const tl = gsap.timeline({ 
+                onComplete: () => {
+                    tl.kill()
+                }
+            })
+            tl.timeScale(1.2) // Animation will play 20% faster than normal
+            
+            const image = el.querySelector('img')
+            tl.to(image, {
+               inertia: {
+                    x: {
+                        velocity: deltaX * 30, // Higher number = movement amplified
+                        end: 0 // Go back to the initial position
+                    },
+                    y: {
+                        velocity: deltaY * 30, // Higher number = movement amplified
+                        end: 0 // Go back to the initial position
+                    },
+                },
+            })
+            tl.fromTo(image, {
+                rotate: 0
+            }, {
+                duration: 0.4,
+                rotate:(Math.random() - 0.5) * 30, // Returns a value between -15 & 15
+                yoyo: true, 
+                repeat: 1,
+                ease: 'power1.inOut' // Will slow at the begin and the end
+            }, '<') // The animation starts at the same time as the previous tween
+        })
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  gsap.registerPlugin(ScrollTrigger, SplitText, TextPlugin);
+
+  console.clear();
+
+  gsap.set(".split", { opacity: 1 });
+
+  document.fonts.ready.then(() => {
+    let containers = gsap.utils.toArray(".container");
+
+    containers.forEach((container) => {
+      let text = container.querySelectorAll(".split");
+
+    
+        
+    SplitText.create(text, {
+      type: "words,lines",
+      mask: "lines",
+      linesClass: "line",
+      autoSplit: true,
+      onSplit: (instance) => {
+        console.log("split")
+        return gsap.from(instance.lines, {
+          yPercent: 120,
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: container,
+            markers: false,
+            scrub: true,
+            start: "clamp(top center)",
+            end: "clamp(bottom center)"
+          }
+        });
+      }
+    });
+  });
+});
+
+
+  ScrollTrigger.create({
+    trigger: "main",   
+    start: "top top",
+    end: "+=200%",
+    pin: true,
+    pinSpacing: false
   });
 </script>
-
   </body>
-</html>
+</html> 

@@ -4,12 +4,13 @@
 
  @import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 
 * {
   margin: 0;
   padding: 0;
-  font-family: "Zen Dots", cursive;
+  font-family: 'OutFit' ,sans-serif;
   box-sizing: border-box;
 }
 
@@ -81,6 +82,7 @@ body {
   height: inherit;
   cursor: pointer;
 }
+
 
 .nav {
   /* background-color: #121212; */
@@ -286,13 +288,14 @@ body {
 
 
 #feedback-form{
+  padding: 20px;
     right: 0;
     visibility: hidden;
     position: absolute;
     display: flex;
-    height: 30vh;
+    height: auto;
     flex-direction: column;
-    background-color: #00000072;
+    background-color:#302f2f;
     gap: 48px;
     top: 50px;
     width: 40vw;
@@ -403,19 +406,12 @@ body {
 }
 
 .playbar {
-  /* display: flex; */
-  /* flex-direction: row; */
   width: clamp(75%, 50%, 100%);
   margin: auto;
-  /* background-color: #313131; */
-   background-color: rgba(255, 255, 255, 0.278);
-  position: fixed;
-  /* position: relative; */
-  /* justify-content: space-evenly; */
+   background-color: rgb(43, 43, 43);
+  position: sticky;
   border-radius: 20px;
-  /* align-items: center; */
-  /* height: 71px; */
-  bottom: 1.1em;
+  bottom: 10px;
   left: 22.9em;
 }
 
@@ -593,10 +589,6 @@ body {
     width: 100px;
   }
 
-  .allcards {
-    margin-left: 25px;
-    /* background: #000; */
-  }
 
   .content{
     /* background-color: #ffffff; */
@@ -651,5 +643,72 @@ body {
   .songbuttons span > img {
     padding: 0px 0px;
     width: 40px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 480px) {
+  .left {
+    width: 260px;
+  }
+
+  .cardContainer {
+    width: 45%;
+    height: auto;
+  }
+
+  .songbuttons {
+    gap: 12px;
+  }
+
+  #songname {
+    font-size: 12px;
+    width: 200px;
+  }
+
+  .playbar {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+/* 📱 Small phones (max 479px) */
+@media (max-width: 479px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .left {
+    width: 100%;
+    left: -100%;
+    border-radius: 12px;
+  }
+
+  .cardContainer {
+    /* width: 100%; */
+    margin: 10px 10px;
+  }
+
+  .allcards {
+    justify-content: center;
+  }
+
+  #songname {
+    font-size: 10px;
+    width: 150px;
+  }
+
+  .songbuttons span > img {
+    width: 28px;
+  }
+
+  .footer {
+    font-size: 8px;
+  }
+
+  .playbar {
+    width: 100%;
+    border-radius: 0;
+    left: 0;
   }
 }
